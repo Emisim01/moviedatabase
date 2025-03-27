@@ -52,7 +52,7 @@
 
             </div>
 
-            <div class="search-filter p-4">
+            <!-- <div class="search-filter p-4">
                 <label for="">Search by title:</label>
                 <input type="text" class="text-grey-900" 
                     placeholder="Search by title"
@@ -61,7 +61,7 @@
                 
                 />
                 
-            </div>
+            </div> -->
 
     </section>
 </template>
