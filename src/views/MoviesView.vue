@@ -52,6 +52,17 @@
 
             </div>
 
+            <div class="search-filter p-4">
+                <label for="">Search by title:</label>
+                <input type="text" class="text-grey-900" 
+                    placeholder="Search by title"
+                    v-model="searchQuery"
+
+                
+                />
+                
+            </div>
+
     </section>
 </template>
 
@@ -64,12 +75,27 @@ import { useMoviesDatabase } from '../modules/useMoviesDatabase'
 const { movies } = useMoviesDatabase()
 
 const selectedGenre = ref('')
+const searchQuery = ref('')
 
 const filteredMovies = computed(() => {
-    return selectedGenre.value 
+    let result = selectedGenre.value
+    
     ? movies.value.filter((movie) => movie.genre === selectedGenre.value)
     : movies.value
+
+    if(searchQuery.value) {
+        result = result.filter((movie) =>
+            movie.title.toLowerCase().includes(searchQuery.value.toLowerCase())) 
+    }
+    
+    return result
 })
+
+// const filteredMovies = computed(() => {
+//     return selectedGenre.value 
+//     ? movies.value.filter((movie) => movie.genre === selectedGenre.value)
+//     : movies.value
+// })
 
 let isMovieDataVisible = ref([])
 
